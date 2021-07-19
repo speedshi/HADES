@@ -10,17 +10,17 @@ class hades_input:
 
 
     def __init__(self,data_path,event_file,station_file):
-        events_file=os.path.join(data_path,event_file)
-        # event file
+        event_file=os.path.join(data_path,event_file)  # event file
         references,refevid,evtsp,reforig,events=hades_input.__read_evfile(event_file)
+        
+        station_file=os.path.join(data_path,station_file)  # station file
+        stations=hades_input.__read_stafile(station_file,reforig)
+        
         self.references=references
         self.refevid=refevid
         self.origin=reforig
         self.data=evtsp
         self.events=events
-        # station file
-        station_file=os.path.join(data_path,station_file)
-        stations=hades_input.__read_stafile(station_file,reforig)
         self.stations=stations
 
 
